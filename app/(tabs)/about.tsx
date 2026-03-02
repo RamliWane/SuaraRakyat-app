@@ -1,10 +1,6 @@
 import { useFonts, Kanit_400Regular, Kanit_700Bold } from '@expo-google-fonts/kanit';
 import { Text, View, Image, Button, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router } from 'expo-router';
-import { ArrowLeft } from 'lucide-react-native';
-
-
 
 export default function TabTwoScreen() {
     const [fontsLoaded] = useFonts({
@@ -13,7 +9,7 @@ export default function TabTwoScreen() {
     });
 
     if (!fontsLoaded) {
-        return null; // Tunggu font dimuat
+        return null;
     }
 
     return (
@@ -22,10 +18,7 @@ export default function TabTwoScreen() {
                 className="flex-1"
                 showsVerticalScrollIndicator={false}
             >
-                <TouchableOpacity className="items-start pt-3 pl-3" onPress={() => router.push("./index")} >
-                    <ArrowLeft size={34} color="white"/>
-                </TouchableOpacity>
-                <View className='flex-1 items-center -mt-10'>
+                <View className='flex-1 items-center mt-1'>
                     <Text className="mt-5 text-4xl font-bold text-white">
                         About Me
                     </Text>

@@ -1,0 +1,224 @@
+{
+  "buku": [
+      {
+        "id": 1,
+        "judul": "Laut Bercerita",
+        "pengarang": "Leila S. Chudori",
+        "penerbit": "KPG",
+        "tahunTerbit": 2017,
+        "isbn": "9786024246945",
+        "stock": 12,
+        "genre": "Fiksi",
+        "gambar": "https://www.gramedia.com/blog/content/images/2020/08/laut-bercerita-leila-s-chudori_gramedia.jpg"
+      },
+      {
+        "id": 2,
+        "judul": "Atomic Habits",
+        "pengarang": "James Clear",
+        "penerbit": "Penguin Random House",
+        "tahunTerbit": 2018,
+        "isbn": "9780735211292",
+        "stock": 20,
+        "genre": "Self Improvement",
+        "gambar": "https://images-cdn.ubuy.co.id/68b070a9c8985636750755ec-atomic-habits-an-easy-proven-way-to.jpg"
+      },
+      {
+        "id": 3,
+        "judul": "Psychology of Money",
+        "pengarang": "Morgan Housel",
+        "penermitterbit": "Harriman House",
+        "tahunTerbit": 2020,
+        "isbn": "9780857197689",
+        "stock": 15,
+        "genre": "Ekonomi",
+        "gambar": "https://m.media-amazon.com/images/I/81gC3mdNi5L.jpg"
+      },
+      {
+        "id": 4,
+        "judul": "Bumi",
+        "pengarang": "Tere Liye",
+        "penerbit": "Gramedia",
+        "tahunTerbit": 2014,
+        "isbn": "9786020307237",
+        "stock": 30,
+        "genre": "Fantasy",
+        "gambar": "https://cdn.gramedia.com/uploads/items/9786020332956_Bumi-New-Cover.jpg"
+      },
+      {
+        "id": 5,
+        "judul": "Filosofi Teras",
+        "pengarang": "Henry Manampiring",
+        "penerbit": "Kompas",
+        "tahunTerbit": 2018,
+        "isbn": "9786024120276",
+        "stock": 25,
+        "genre": "Filsafat",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuMgoJf6PHoco_SLKXVvm7SrZYNs_puF1YVg&s"
+      },
+      {
+        "id": 6,
+        "judul": "Laskar Pelangi",
+        "pengarang": "Andrea Hirata",
+        "penerbit": "Bentang Pustaka",
+        "tahunTerbit": 2005,
+        "isbn": "9789793062792",
+        "stock": 18,
+        "genre": "Fiksi",
+        "gambar": "https://upload.wikimedia.org/wikipedia/id/1/17/Laskar_Pelangi_film.jpg"
+      },
+      {
+        "id": 7,
+        "judul": "The Subtle Art of Not Giving a F*ck",
+        "pengarang": "Mark Manson",
+        "penerbit": "Harper",
+        "tahunTerbit": 2016,
+        "isbn": "9780062457714",
+        "stock": 22,
+        "genre": "Self Improvement",
+        "gambar": "https://cdn.gramedia.com/uploads/items/THE-SUBTLE-ART-OF-NOT-GIVIN.jpg"
+      },
+      {
+        "id": 8,
+        "judul": "Rich Dad Poor Dad",
+        "pengarang": "Robert Kiyosaki",
+        "penerbit": "Plata Publishing",
+        "tahunTerbit": 1997,
+        "isbn": "9781612680194",
+        "stock": 27,
+        "genre": "Bisnis",
+        "gambar": "https://gpu.id/data-gpu/images/img-book/94906/625203007.jpg"
+      },
+      {
+        "id": 9,
+        "judul": "Harry Potter and the Sorcerer's Stone",
+        "pengarang": "J.K. Rowling",
+        "penerbit": "Bloomsbury",
+        "tahunTerbit": 1997,
+        "isbn": "9780747532743",
+        "stock": 40,
+        "genre": "Fantasy",
+        "gambar": "https://upload.wikimedia.org/wikipedia/id/5/56/Harry_potter_deathly_hallows_US.jpg"
+      },
+      {
+        "id": 10,
+        "judul": "Pulang",
+        "pengarang": "Tere Liye",
+        "penerbit": "Gramedia",
+        "tahunTerbit": 2015,
+        "isbn": "9786020332955",
+        "stock": 21,
+        "genre": "Fiksi",
+        "gambar": "https://cdn.gramedia.com/uploads/items/pulang_tere_liye.jpeg"
+      },
+      {
+        "id": 11,
+        "judul": "Perahu Kertas",
+        "pengarang": "Dewi Lestari",
+        "penerbit": "Bentang Pustaka",
+        "tahunTerbit": 2009,
+        "isbn": "9789791227308",
+        "stock": 14,
+        "genre": "Romansa",
+        "gambar": "https://example.com/img/perahu-kertas.jpg"
+      },
+      {
+        "id": 12,
+        "judul": "Negeri 5 Menara",
+        "pengarang": "Ahmad Fuadi",
+        "penerbit": "Gramedia",
+        "tahunTerbit": 2009,
+        "isbn": "9789792259445",
+        "stock": 19,
+        "genre": "Fiksi",
+        "gambar": "https://example.com/img/negeri-5-menara.jpg"
+      },
+      {
+        "id": 13,
+        "judul": "Sapiens",
+        "pengarang": "Yuval Noah Harari",
+        "penerbit": "Harper",
+        "tahunTerbit": 2014,
+        "isbn": "9780062316097",
+        "stock": 17,
+        "genre": "Sejarah",
+        "gambar": "https://example.com/img/sapiens.jpg"
+      },
+      {
+        "id": 14,
+        "judul": "The Alchemist",
+        "pengarang": "Paulo Coelho",
+        "penerbit": "HarperOne",
+        "tahunTerbit": 1988,
+        "isbn": "9780061122415",
+        "stock": 16,
+        "genre": "Filosofi",
+        "gambar": "https://example.com/img/alchemist.jpg"
+      },
+      {
+        "id": 15,
+        "judul": "Dilan 1990",
+        "pengarang": "Pidi Baiq",
+        "penerbit": "Pastel Books",
+        "tahunTerbit": 2014,
+        "isbn": "9786027870411",
+        "stock": 23,
+        "genre": "Romansa",
+        "gambar": "https://example.com/img/dilan-1990.jpg"
+      },
+      {
+        "id": 16,
+        "judul": "Bicara Itu Ada Seninya",
+        "pengarang": "Oh Su Hyang",
+        "penerbit": "Grasindo",
+        "tahunTerbit": 2020,
+        "isbn": "9786020523314",
+        "stock": 29,
+        "genre": "Komunikasi",
+        "gambar": "https://example.com/img/bicara-itu-ada-seninya.jpg"
+      },
+      {
+        "id": 17,
+        "judul": "Ikigai",
+        "pengarang": "Héctor García & Francesc Miralles",
+        "penerbit": "Penguin",
+        "tahunTerbit": 2016,
+        "isbn": "9780143130727",
+        "stock": 26,
+        "genre": "Self Improvement",
+        "gambar": "https://example.com/img/ikigai.jpg"
+      },
+      {
+        "id": 18,
+        "judul": "The Psychology of Intelligence",
+        "pengarang": "Jean Piaget",
+        "penerbit": "Routledge",
+        "tahunTerbit": 1950,
+        "isbn": "9780415254014",
+        "stock": 10,
+        "genre": "Psikologi",
+        "gambar": "https://example.com/img/psychology-intelligence.jpg"
+      },
+      {
+        "id": 19,
+        "judul": "Thinking, Fast and Slow",
+        "pengarang": "Daniel Kahneman",
+        "penerbit": "Farrar, Straus and Giroux",
+        "tahunTerbit": 2011,
+        "isbn": "9780374533557",
+        "stock": 31,
+        "genre": "Psikologi",
+        "gambar": "https://example.com/img/thinking-fast-slow.jpg"
+      },
+      {
+        "id": 20,
+        "judul": "The Hobbit",
+        "pengarang": "J.R.R. Tolkien",
+        "penerbit": "HarperCollins",
+        "tahunTerbit": 1937,
+        "isbn": "9780261103344",
+        "stock": 24,
+        "genre": "Fantasy",
+        "gambar": "https://example.com/img/hobbit.jpg"
+      }
+    ]
+}

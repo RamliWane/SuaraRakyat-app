@@ -2,9 +2,13 @@ import { Image } from "expo-image";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeft, Bookmark, Star, ArrowRight } from "lucide-react-native";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
+import data from "../../data.json";
 
 export default function App() {
+    const { id } = useLocalSearchParams();
+    const buku = data.buku.find((buku: any) => buku.id == id);
+
     return (
         <SafeAreaView className="flex-1 bg-[#0F172A]">
             <ScrollView
@@ -12,7 +16,7 @@ export default function App() {
                 showsVerticalScrollIndicator={false}
             >
                 <View className="flex-row justify-between items-center px-5 pt-4 pb-2">
-                    <TouchableOpacity className="w-10 h-10 bg-gray-200 rounded-full items-center justify-center" onPress={() => router.back()}>
+                    <TouchableOpacity  className="w-10 h-10 bg-gray-200 rounded-full items-center justify-center" onPress={() => router.back()}>
                         <ArrowLeft size={24} color="#000" />
                     </TouchableOpacity>
                     <TouchableOpacity className="w-10 h-10 bg-white rounded-full items-center justify-center">
@@ -22,7 +26,7 @@ export default function App() {
 
                 <View className="items-center py-6">
                     <Image
-                        source={require("../../assets/profile.jpeg")}
+                        source={{ uri: buku?.gambar }}
                         className="w-48 h-72 rounded-lg shadow-lg"
                         contentFit="cover"
                     />
@@ -30,10 +34,10 @@ export default function App() {
 
                 <View className="items-center px-5 mb-4">
                     <Text className="text-white text-xl font-bold text-center mb-1">
-                        The Minds of Billy Milligan
+                        {buku?.judul}
                     </Text>
                     <Text className="text-white text-base">
-                        Daniel Keyes
+                        {buku?.pengarang}
                     </Text>
                 </View>
 
@@ -58,31 +62,31 @@ export default function App() {
                     <View className="mb-3">
                         <Text className="text-gray-900 text-sm">
                             <Text className="font-semibold">Penerbit : </Text>
-                            <Text className="text-gray-600">Random House</Text>
+                            <Text className="text-gray-600">{buku?.penerbit}</Text>
                         </Text>
                     </View>
                     <View className="mb-3">
                         <Text className="text-gray-900 text-sm">
                             <Text className="font-semibold">Tahun Terbit : </Text>
-                            <Text className="text-gray-600">Hard Cover</Text>
+                            <Text className="text-gray-600">{buku?.tahunTerbit}</Text>
                         </Text>
                     </View>
                     <View className="mb-3">
                         <Text className="text-gray-900 text-sm">
                             <Text className="font-semibold">ISBN : </Text>
-                            <Text className="text-gray-600">1981</Text>
+                            <Text className="text-gray-600">{buku?.isbn}</Text>
                         </Text>
                     </View>
                     <View className="mb-3">
                         <Text className="text-gray-900 text-sm">
                             <Text className="font-semibold">Stock : </Text>
-                            <Text className="text-gray-600">Random House</Text>
+                            <Text className="text-gray-600">{buku?.stock}</Text>
                         </Text>
                     </View>
                     <View className="mb-3">
                         <Text className="text-gray-900 text-sm">
                             <Text className="font-semibold">Genre : </Text>
-                            <Text className="text-gray-600">Hard Cover</Text>
+                            <Text className="text-gray-600">{buku?.genre}</Text>
                         </Text>
                     </View>
                     <View className="mt-2">
@@ -114,43 +118,29 @@ export default function App() {
                     </View>
 
                     <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                className="m-3"
+              >
+                {data.buku.slice(0, 5).map((item) => (
+                  <View className="m-2">
+                    <TouchableOpacity
+                      key={item.id}
+                      onPress={() => router.push(`./detail/${item.id}`)}
+                      className="gap-3"
                     >
-                        <TouchableOpacity onPress={() => router.push("./detail/[id]")}>
-                            <Image
-                                source={require("../../assets/profile.jpeg")}
-                                className="w-32 h-48 rounded-xl"
-                                contentFit="cover"
-                            />
-                        </TouchableOpacity>
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                    </ScrollView>
+                      <Image
+                        source={{ uri: item.gambar }}
+                        className="w-32 h-48 rounded-xl"
+                        contentFit="cover"
+                      />
+                      <Text className="text-white text-center mt-2 w-32 flex-wrap">
+                        {item.judul}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </ScrollView>
 
                     <View className="px-5 pt-5 flex-row items-center justify-between">
                         <Text className="text-white text-xl font-semibold mb-3">
@@ -158,43 +148,30 @@ export default function App() {
                         </Text>
                         <ArrowRight size={24} color="white" />
                     </View>
-
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}
+<ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                className="m-3"
+              >
+                {data.buku.slice(5, 10).map((item) => (
+                  <View className="m-2">
+                    <TouchableOpacity
+                      key={item.id}
+                      onPress={() => router.push(`./detail/${item.id}`)}
+                      className="gap-3"
                     >
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                        <Image
-                            source={require("../../assets/profile.jpeg")}
-                            className="w-32 h-48 rounded-xl"
-                            contentFit="cover"
-                        />
-                    </ScrollView>
+                      <Image
+                        source={{ uri: item.gambar }}
+                        className="w-32 h-48 rounded-xl"
+                        contentFit="cover"
+                      />
+                      <Text className="text-white text-center mt-2 w-32 flex-wrap">
+                        {item.judul}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </ScrollView>
                 </View>
 
             </ScrollView>

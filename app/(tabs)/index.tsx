@@ -1,8 +1,10 @@
 import { Image } from "expo-image";
 import { View, Text, TextInput, ScrollView, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowRight, BookmarkPlus } from "lucide-react-native";
+import { ArrowRight, Bookmark } from "lucide-react-native";
 import { router } from "expo-router";
+import data from "../../data.json";
+
 
 export default function App() {
   return (
@@ -17,7 +19,9 @@ export default function App() {
               source={require("../../assets/profile.jpeg")}
               className="w-20 h-20 rounded-full"
             />
-            <BookmarkPlus size={24} color="white" />
+            <TouchableOpacity className="w-10 h-10 bg-white rounded-full items-center justify-center">
+                <Bookmark size={20} color="#0F172A" fill="#0F172A" />
+              </TouchableOpacity>
           </View>
 
           <View className="px-5">
@@ -48,43 +52,29 @@ export default function App() {
             </View>
 
             <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}
-            >
-              <TouchableOpacity onPress={() => router.push("./detail/[id]")}>
-                <Image
-                  source={require("../../assets/profile.jpeg")}
-                  className="w-32 h-48 rounded-xl"
-                  contentFit="cover"
-                />
-              </TouchableOpacity>
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-            </ScrollView>
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                className="m-3"
+              >
+                {data.buku.slice(0, 5).map((item) => (
+                  <View className="m-2">
+                    <TouchableOpacity
+                      key={item.id}
+                      onPress={() => router.push(`./detail/${item.id}`)}
+                      className="gap-3"
+                    >
+                      <Image
+                        source={{ uri: item.gambar }}
+                        className="w-32 h-48 rounded-xl"
+                        contentFit="cover"
+                      />
+                      <Text className="text-white text-center mt-2 w-32 flex-wrap">
+                        {item.judul}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </ScrollView>
 
             <View className="px-5 pt-5 flex-row items-center justify-between">
               <Text className="text-white text-xl font-semibold mb-3">
@@ -92,43 +82,30 @@ export default function App() {
               </Text>
               <ArrowRight size={24} color="white" />
             </View>
-
             <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}
-            >
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-              <Image
-                source={require("../../assets/profile.jpeg")}
-                className="w-32 h-48 rounded-xl"
-                contentFit="cover"
-              />
-            </ScrollView>
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                className="m-3"
+              >
+                {data.buku.slice(5, 10).map((item) => (
+                  <View className="m-2">
+                    <TouchableOpacity
+                      key={item.id}
+                      onPress={() => router.push(`./detail/${item.id}`)}
+                      className="gap-3"
+                    >
+                      <Image
+                        source={{ uri: item.gambar }}
+                        className="w-32 h-48 rounded-xl"
+                        contentFit="cover"
+                      />
+                      <Text className="text-white text-center mt-2 w-32 flex-wrap">
+                        {item.judul}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </ScrollView>
           </View>
 
         </View>
