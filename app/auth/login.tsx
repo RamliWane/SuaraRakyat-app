@@ -1,61 +1,125 @@
-import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 import { router } from "expo-router";
+import { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { Image } from "expo-image";
 
 export default function LoginScreen() {
+    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
-        <SafeAreaView className="flex-1 bg-white justify-center px-6">
+        <SafeAreaView className="flex-1 bg-[#f0fdf4]">
+            <StatusBar barStyle="dark-content" />
 
-            <View className="items-center mb-10">
-                <View className="w-24 h-24 bg-[#0F172A] rounded-full items-center justify-center border border-white/20">
-                    <Text className="text-white text-4xl font-bold">R</Text>
-                </View>
-                <Text className="text-[#0F172A] text-3xl font-bold mt-4 tracking-wide">
-                    Welcome Back
-                </Text>
-                <Text className="text-[#0F172A] text-base mt-1">
-                    Sign in to continue
-                </Text>
-            </View>
+            <View className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-emerald-100 opacity-60" />
+            <View className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-emerald-200 opacity-40" />
 
-            <View className="bg-[#0F172A] border border-white/10 p-6 m-2 rounded-2xl shadow-xl backdrop-blur-md">
+            <View className="flex-1 justify-center px-6">
 
-                <View className="mb-6">
-                    <Text className="text-white text-base mb-2">Email</Text>
-                    <TextInput
-                        className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white"
-                        placeholder="Enter your email"
-                        placeholderTextColor="#9CA3AF"
-                    />
+                <View className="items-center mb-8">
+                    <View className="w-[60px] h-[60px] rounded-[16px] bg-emerald-600 items-center justify-center mb-3">
+                        <Image
+                            source={require("../../assets/logo3.png")}
+                            className="w-20 h-20 rounded-full"
+                        />
+                    </View>
+                    <Text className="text-[24px] font-semibold text-gray-900">
+                        SuaraRakyat
+                    </Text>
+                    <Text className="text-[14px] text-gray-500 mt-1">
+                        Masuk untuk melanjutkan
+                    </Text>
                 </View>
 
-                <View className="mb-6">
-                    <Text className="text-white text-base mb-2">Password</Text>
-                    <TextInput
-                        className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white"
-                        placeholder="Enter your password"
-                        placeholderTextColor="#9CA3AF"
-                        secureTextEntry
-                    />
+                <View className="bg-white rounded-[20px] p-5 border border-gray-100">
+
+                    <View className="mb-4">
+                        <View className="flex-row items-center gap-1.5 mb-2">
+                            <Ionicons name="mail-outline" size={14} color="#9ca3af" />
+                            <Text className="text-[12px] font-medium text-gray-700">Email</Text>
+                        </View>
+                        <TextInput
+                            value={email}
+                            onChangeText={setEmail}
+                            placeholder="Masukkan email kamu"
+                            placeholderTextColor="#9CA3AF"
+                            keyboardType="email-address"
+                            autoCapitalize="none"
+                            className="h-[46px] bg-gray-50 border border-gray-200 rounded-xl px-4 text-[14px] text-gray-900"
+                        />
+                    </View>
+
+                    <View className="mb-2">
+                        <View className="flex-row items-center gap-1.5 mb-2">
+                            <Ionicons name="lock-closed-outline" size={14} color="#9ca3af" />
+                            <Text className="text-[12px] font-medium text-gray-700">Password</Text>
+                        </View>
+                        <View className="h-[46px] bg-gray-50 border border-gray-200 rounded-xl px-4 flex-row items-center justify-between">
+                            <TextInput
+                                value={password}
+                                onChangeText={setPassword}
+                                placeholder="Masukkan password kamu"
+                                placeholderTextColor="#9CA3AF"
+                                secureTextEntry={!showPassword}
+                                className="flex-1 text-[14px] text-gray-900"
+                            />
+                            <TouchableOpacity onPress={() => setShowPassword(p => !p)}>
+                                <Ionicons
+                                    name={showPassword ? "eye-outline" : "eye-off-outline"}
+                                    size={18}
+                                    color="#9ca3af"
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    <TouchableOpacity className="mb-5 self-end">
+                        <Text className="text-[12px] text-emerald-600 font-medium">
+                            Lupa password?
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => router.push("/(tabs)")}
+                        className="h-[46px] bg-emerald-600 rounded-xl flex-row items-center justify-center gap-2 mb-4"
+                        activeOpacity={0.85}
+                    >
+                        <Ionicons name="log-in-outline" size={18} color="white" />
+                        <Text className="text-white text-[14px] font-semibold">Masuk</Text>
+                    </TouchableOpacity>
+
+                    <View className="flex-row items-center gap-3 mb-4">
+                        <View className="flex-1 h-[0.5px] bg-gray-200" />
+                        <Text className="text-[11px] text-gray-400">atau masuk dengan</Text>
+                        <View className="flex-1 h-[0.5px] bg-gray-200" />
+                    </View>
+
+                    <TouchableOpacity
+                        className="h-[44px] border border-gray-200 rounded-xl flex-row items-center justify-center gap-2 bg-white"
+                        activeOpacity={0.8}
+                    >
+                        <Ionicons name="logo-google" size={18} color="#ea4335" />
+                        <Text className="text-[13px] font-medium text-gray-700">
+                            Lanjutkan dengan Google
+                        </Text>
+                    </TouchableOpacity>
+
                 </View>
 
-                <TouchableOpacity className="bg-white py-2 m-5 rounded-xl mt-2"   onPress={() => router.push("/(tabs)")}>
-                    <Text className="text-center text-black font-semibold text-lg">
-                        Login
+                <TouchableOpacity
+                    className="mt-6"
+                    onPress={() => router.push("./register")}
+                >
+                    <Text className="text-center text-[13px] text-gray-500">
+                        Belum punya akun?{" "}
+                        <Text className="text-emerald-600 font-semibold">Daftar sekarang</Text>
                     </Text>
                 </TouchableOpacity>
-            </View>
 
-            <TouchableOpacity
-                className="mt-4"
-                onPress={() => router.push("./register")}
-            >
-                <Text className="text-center font-bold text-[#0F172A]">
-                    Belum punya akun?{" "}
-                    <Text className="text-[#0F172A] underline font-semibold">Register</Text>
-                </Text>
-            </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 }
