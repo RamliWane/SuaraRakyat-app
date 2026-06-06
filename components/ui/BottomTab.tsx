@@ -32,18 +32,22 @@ export default function BottomTab() {
               }
             }}
           >
-            <Ionicons
-              name={tab.icon as any}
-              size={22}
-              color={tab.active ? "#10b981" : "#9ca3af"}
-            />
+            {tab.icon && (
+              <Ionicons
+                name={tab.icon as any}
+                size={22}
+                color={tab.active ? "#10b981" : "#9ca3af"}
+              />
+            )}
 
-            <Text
-              className="text-xs"
-              style={{ color: tab.active ? "#10b981" : "#9ca3af" }}
-            >
-              {tab.label}
-            </Text>
+            {tab.label ? (
+              <Text
+                className="text-xs"
+                style={{ color: tab.active ? "#10b981" : "#9ca3af" }}
+              >
+                {tab.label}
+              </Text>
+            ) : null}
           </TouchableOpacity>
         );
       })}

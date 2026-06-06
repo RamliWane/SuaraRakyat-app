@@ -11,6 +11,7 @@ export type Report = {
   created_at: string;
   user_id: number;
   category_id: number;
+  comment_count?: number;
 };
 
 export type TabItem = {

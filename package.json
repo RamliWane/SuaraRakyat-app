@@ -1,5 +1,5 @@
 {
-  "name": "readmy-app",
+  "name": "suara-rakyat-app",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -33,6 +33,7 @@
     "expo-symbols": "~1.0.7",
     "expo-system-ui": "~6.0.8",
     "expo-web-browser": "~15.0.9",
+    "jwt-decode": "^4.0.0",
     "lucide-react-native": "^0.555.0",
     "nativewind": "^4.2.1",
     "prettier-plugin-tailwindcss": "^0.5.14",

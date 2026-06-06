@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { StatusBar, FlatList, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import * as SecureStore from "expo-secure-store";
+import { getItem } from "@/types/utils/secureStorage";
 
 import ReportCard from "@/components/ReportCard";
 import BottomTab from "@/components/ui/BottomTab";
@@ -15,7 +15,7 @@ export default function HomeScreen() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        SecureStore.getItemAsync("token").then((token) => {
+        getItem("token").then((token) => {
             if (!token) router.replace("/auth/login");
         });
 
