@@ -1,6 +1,6 @@
 // app/submission/index.tsx
 import { useEffect, useState } from "react";
-import { StatusBar, FlatList, ActivityIndicator, View, Text } from "react-native";
+import { StatusBar, FlatList, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import * as SecureStore from "expo-secure-store";

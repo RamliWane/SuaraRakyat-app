@@ -66,19 +66,19 @@
                             />
                         </View>
 
-                        <View className="mb-2">
+                       <View className="mb-2">
                             <View className="flex-row items-center gap-1.5 mb-2">
                                 <Ionicons name="lock-closed-outline" size={14} color="#9ca3af" />
                                 <Text className="text-[12px] font-medium text-gray-700">Password</Text>
                             </View>
-                            <View className="h-[46px] bg-gray-50 border border-gray-200 rounded-xl px-4 flex-row items-center justify-between">
+                            <View className="flex-row items-center h-[46px] bg-gray-50 border border-gray-200 rounded-xl px-3">
                                 <TextInput
                                     value={password}
                                     onChangeText={setPassword}
                                     placeholder="Masukkan password kamu"
                                     placeholderTextColor="#9CA3AF"
                                     secureTextEntry={!showPassword}
-                                    className="h-[46px] bg-gray-50 border border-gray-200 rounded-xl text-[14px] text-gray-900"
+                                    className="flex-1 text-[14px] h-[46px] text-gray-900"
                                 />
                                 <TouchableOpacity onPress={() => setShowPassword(p => !p)}>
                                     <Ionicons

@@ -7,7 +7,7 @@ const categories = [
     { icon: "construct-outline", label: "Semua", bg: "#fff7ed", color: "#ea580c" },
     { icon: "construct-outline", label: "Infrastruktur", bg: "#fff7ed", color: "#ea580c" },
     { icon: "leaf-outline", label: "Lingkungan", bg: "#f0fdf4", color: "#16a34a" },
-    { icon: "medical-outline", label: "Kesehatan", bg: "#fef2f2", color: "#dc2626" },
+    { icon: "medical-outline", label: "Keamanan", bg: "#fef2f2", color: "#dc2626" },
     { icon: "school-outline", label: "Pendidikan", bg: "#eff6ff", color: "#2563eb" }
 ];
 
