@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 
 const categories = [
+    { icon: "construct-outline", label: "Semua", bg: "#fff7ed", color: "#ea580c" },
     { icon: "construct-outline", label: "Infrastruktur", bg: "#fff7ed", color: "#ea580c" },
     { icon: "leaf-outline", label: "Lingkungan", bg: "#f0fdf4", color: "#16a34a" },
     { icon: "medical-outline", label: "Kesehatan", bg: "#fef2f2", color: "#dc2626" },
@@ -25,7 +26,7 @@ export default function CategoryButton(){
                 className="mb-2"
             >
                 {categories.map((c) => (
-                    <TouchableOpacity key={c.label} className="items-center bg-white rounded-xl px-3 py-2 border border-gray-200">
+                    <TouchableOpacity key={c.label} className="items-center bg-white rounded-xl px-3 py-3 border border-gray-200">
                         <View 
                             className="w-14 h-14 rounded-xl items-center justify-center" 
                             style={{ backgroundColor: c.bg }}
