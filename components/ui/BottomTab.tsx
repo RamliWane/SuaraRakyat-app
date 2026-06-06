@@ -1,13 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
-const tabs = [
-  { icon: "home-outline", label: "Beranda", active: true },
-  { icon: "map-outline", label: "Peta", active: false },
-  { icon: null, label: "", active: false },
-  { icon: "document-text-outline", label: "Laporan", active: false },
-  { icon: "person-outline", label: "Profil", active: false },
-];
+import { router } from "expo-router"; // 1. Import router di sini
+import { tabs } from "@/types/report";
 
 export default function BottomTab() {
   return (
@@ -17,18 +11,37 @@ export default function BottomTab() {
           return (
             <View key={i} className="flex-1 items-center -mt-6">
               <TouchableOpacity
+                onPress={() => router.push('./laporan')} // 2. Pindah ke halaman buat laporan pas di-tap
                 className="w-14 h-14 rounded-full items-center justify-center shadow-lg"
                 style={{ backgroundColor: "#10b981" }}
+                activeOpacity={0.8}
               >
                 <Ionicons name="add" size={30} color="white" />
               </TouchableOpacity>
             </View>
           );
         }
+        
         return (
-          <TouchableOpacity key={i} className="flex-1 items-center gap-0.5">
-            <Ionicons name={tab.icon as any} size={22} color={tab.active ? "#10b981" : "#9ca3af"} />
-            <Text className="text-xs" style={{ color: tab.active ? "#10b981" : "#9ca3af" }}>
+          <TouchableOpacity
+            key={i}
+            className="flex-1 items-center gap-0.5"
+            onPress={() => {
+              if (tab.route) {
+                router.navigate(tab.route as any);
+              }
+            }}
+          >
+            <Ionicons
+              name={tab.icon as any}
+              size={22}
+              color={tab.active ? "#10b981" : "#9ca3af"}
+            />
+
+            <Text
+              className="text-xs"
+              style={{ color: tab.active ? "#10b981" : "#9ca3af" }}
+            >
               {tab.label}
             </Text>
           </TouchableOpacity>

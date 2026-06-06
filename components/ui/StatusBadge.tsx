@@ -3,9 +3,10 @@ import { Report } from "@/types/report";
 
 export default function StatusBadge({ status }: { status: Report["status"] }) {
   const colors: Record<Report["status"], string> = {
-    Diproses: "#3b82f6",
-    Selesai: "#10b981",
-    Ditolak: "#ef4444",
+    diproses: "#3b82f6",
+    selesai: "#10b981",
+    ditolak: "#ef4444",
+    pending: "#f59e0b",
   };
   return (
     <Text style={{ color: colors[status], fontSize: 13, fontWeight: "600" }}>

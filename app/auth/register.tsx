@@ -1,9 +1,12 @@
-import { View, Text, TextInput, TouchableOpacity, StatusBar, ScrollView } from "react-native";
+// app/auth/register.tsx
+
+import { View, Text, TextInput, TouchableOpacity, StatusBar, ScrollView, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
+import { register } from "@/types/api/auth";
 
 export default function RegisterScreen() {
     const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +15,17 @@ export default function RegisterScreen() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
+
+
+    const handleRegister = async () => {
+    if (password !== confirm) return Alert.alert("Password tidak cocok");
+    try {
+        await register(nama, email, password); // nama = username
+        router.replace("./login");
+    } catch (err: any) {
+        Alert.alert("Register gagal", err.message);
+    }
+    };
 
     return (
         <SafeAreaView className="flex-1 bg-[#f0fdf4]">
@@ -26,7 +40,7 @@ export default function RegisterScreen() {
                 keyboardShouldPersistTaps="handled"
             >
                 <View className="items-center mb-7">
-                    <View className="w-[60px] h-[60px] rounded-[16px] bg-emerald-600 items-center justify-center mb-3">
+                    <View className="w-[60px] h-[60px] rounded-[16px] bg-[#A2CB8B] items-center justify-center mb-3">
                         <Image
                             source={require("../../assets/logo3.png")}
                             className="w-20 h-20 rounded-full"
@@ -40,7 +54,7 @@ export default function RegisterScreen() {
                     </Text>
                 </View>
 
-                <View className="bg-white rounded-[20px] p-5 border border-gray-100">
+                <View className="bg-white rounded-[20px] p-4 border border-gray-100">
 
                     <View className="mb-4">
                         <View className="flex-row items-center gap-1.5 mb-1.5">
@@ -88,13 +102,14 @@ export default function RegisterScreen() {
                                     secureTextEntry={!showPassword}
                                     className="flex-1 text-[13px] text-gray-900"
                                 />
-                                <TouchableOpacity onPress={() => setShowPassword(p => !p)}>
+                                 <TouchableOpacity onPress={() => setShowPassword(p => !p)}>
                                     <Ionicons
-                                        name={showPassword ? "eye-outline" : "eye-off-outline"}
+                                        name={showConfirm ? "eye-outline" : "eye-off-outline"}
                                         size={16}
                                         color="#9ca3af"
                                     />
                                 </TouchableOpacity>
+
                             </View>
                         </View>
 
@@ -112,7 +127,7 @@ export default function RegisterScreen() {
                                     secureTextEntry={!showConfirm}
                                     className="flex-1 text-[13px] text-gray-900"
                                 />
-                                <TouchableOpacity onPress={() => setShowConfirm(p => !p)}>
+                                <TouchableOpacity onPress={() => setShowPassword(p => !p)}>
                                     <Ionicons
                                         name={showConfirm ? "eye-outline" : "eye-off-outline"}
                                         size={16}
@@ -124,8 +139,8 @@ export default function RegisterScreen() {
                     </View>
 
                     <TouchableOpacity
-                        onPress={() => router.push("./login")}
-                        className="h-[46px] bg-emerald-600 rounded-xl flex-row items-center justify-center gap-2 mb-4"
+                        onPress={handleRegister}
+                        className="h-[46px] bg-[#A2CB8B] rounded-xl flex-row items-center justify-center gap-2 mb-4"
                         activeOpacity={0.85}
                     >
                         <Ionicons name="person-add-outline" size={18} color="white" />
@@ -162,7 +177,7 @@ export default function RegisterScreen() {
                 >
                     <Text className="text-center text-[13px] text-gray-500">
                         Sudah punya akun?{" "}
-                        <Text className="text-emerald-600 font-semibold">Masuk sekarang</Text>
+                        <Text className="text-[#A2CB8B] font-semibold">Masuk sekarang</Text>
                     </Text>
                 </TouchableOpacity>
 

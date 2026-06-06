@@ -14,7 +14,10 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="auth/login" options={{ headerShown: false }} />
         <Stack.Screen name="auth/register" options={{ headerShown: false }} />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="home/index" options={{ headerShown: false }} />
+        <Stack.Screen name="laporan/index" options={{ headerShown: false }} />
+        <Stack.Screen name="submission/index" options={{ headerShown: false }} />
+        <Stack.Screen name="profile/index" options={{ headerShown: false }} />
         <Stack.Screen name="detail" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
       </Stack>

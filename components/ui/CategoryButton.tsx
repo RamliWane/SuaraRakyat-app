@@ -30,7 +30,6 @@ export default function CategoryButton(){
                             className="w-14 h-14 rounded-xl items-center justify-center" 
                             style={{ backgroundColor: c.bg }}
                         >
-                            <Ionicons name={c.icon as any} size={26} color={c.color} />
                         </View>
                         <Text className="text-[11px] font-medium text-gray-600 text-center">{c.label}</Text>
                     </TouchableOpacity>
