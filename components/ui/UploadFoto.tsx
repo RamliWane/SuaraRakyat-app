@@ -5,7 +5,6 @@ import { createClient } from "@supabase/supabase-js";
 import HeaderBikinLaporan from "./HeaderBikinLaporan";
 import { Dispatch, SetStateAction } from "react";
 
-
 const supabase = createClient(
   process.env.EXPO_PUBLIC_SUPABASE_URL!,
   process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!
@@ -13,7 +12,6 @@ const supabase = createClient(
 const BUCKET = "laporan-images";
 
 export type ImageItem = { uri: string; uploading: boolean; url: string | null };
-
 
 interface FotoPickerProps {
   images: ImageItem[];
@@ -37,34 +35,37 @@ export default function UploadFoto({ images, onChange }: FotoPickerProps) {
 
     const uri = result.assets[0].uri;
     const index = images.length;
-    onChange([...images, { uri, uploading: true, url: null }]);
+    onChange((prev) => [...prev, { uri, uploading: true, url: null }]);
 
     try {
       const blob = await (await fetch(uri)).blob();
       const uriParts = uri.split(".");
-        const ext = uriParts.length > 1 ? uriParts.pop()! : "jpg";
-        const safeExt = ["jpg", "jpeg", "png", "webp"].includes(ext.toLowerCase()) ? ext.toLowerCase() : "jpg";
-        const fileName = `report_${Date.now()}.${safeExt}`;
+      const ext = uriParts.length > 1 ? uriParts.pop()! : "jpg";
+      const safeExt = ["jpg", "jpeg", "png", "webp"].includes(ext.toLowerCase()) ? ext.toLowerCase() : "jpg";
+      const fileName = `report_${Date.now()}.${safeExt}`;
 
-        const { error } = await supabase.storage
+      const { error } = await supabase.storage
         .from(BUCKET)
         .upload(fileName, blob, { contentType: `image/${safeExt === "jpg" ? "jpeg" : safeExt}` });
       if (error) throw new Error(error.message);
 
       const { data } = supabase.storage.from(BUCKET).getPublicUrl(fileName);
-      onChange(prev => prev.map((img, i) => i === index ? { ...img, uploading: false, url: data.publicUrl } : img));
+      onChange((prev) => prev.map((img, i) => i === index ? { ...img, uploading: false, url: data.publicUrl } : img));
     } catch (err: any) {
       Alert.alert("Upload Gagal", err.message);
-      onChange(prev => prev.filter((_, i) => i !== index));
+      onChange((prev) => prev.filter((_, i) => i !== index));
     }
   };
 
   const removeImage = (i: number) => onChange(images.filter((_, idx) => idx !== i));
 
+  const emptySlots = Math.max(0, 2 - images.length);
+
   return (
     <View>
       <HeaderBikinLaporan icon="image-outline" label="Foto Bukti" />
-      <View className="flex-row gap-3 px-4 py-4">
+      <View className="flex-row gap-3 px-4 py-4 flex-wrap">
+
         {images.length < 3 && (
           <TouchableOpacity
             onPress={pickImage}
@@ -99,11 +100,12 @@ export default function UploadFoto({ images, onChange }: FotoPickerProps) {
           </View>
         ))}
 
-        {Array.from({ length: Math.max(0, 2 - images.length) }).map((_, i) => (
+        {Array.from({ length: emptySlots }).map((_, i) => (
           <View key={`ph-${i}`} style={{ width: 80, height: 80, borderRadius: 12, backgroundColor: "#f3f4f6", borderWidth: 1, borderColor: "#e5e7eb", alignItems: "center", justifyContent: "center" }}>
             <Ionicons name="image-outline" size={24} color="#d1d5db" />
           </View>
         ))}
+
       </View>
     </View>
   );

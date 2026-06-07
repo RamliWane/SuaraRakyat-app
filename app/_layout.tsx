@@ -6,17 +6,20 @@ import "../global.css"
 import Toast from 'react-native-toast-message';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="auth/login" options={{ headerShown: false }} />
         <Stack.Screen name="auth/register" options={{ headerShown: false }} />
         <Stack.Screen name="home/index" options={{ headerShown: false }} />
         <Stack.Screen name="laporan/index" options={{ headerShown: false }} />
+        <Stack.Screen name="peta/index" options={{ headerShown: false }} />
         <Stack.Screen name="submission/index" options={{ headerShown: false }} />
         <Stack.Screen name="profile/index" options={{ headerShown: false }} />
         <Stack.Screen name="detail" options={{ headerShown: false }} />
@@ -26,5 +29,6 @@ export default function RootLayout() {
       <Toast />
       
     </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }

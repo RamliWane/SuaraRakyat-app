@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "readmy-app",
-    "slug": "readmy-app",
+    "name": "suara-rakyat-app",
+    "slug": "suara-rakyat-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "readmyapp",
+    "scheme": "suara-rakyat-app",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -39,7 +39,9 @@
           }
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

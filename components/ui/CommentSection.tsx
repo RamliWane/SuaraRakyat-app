@@ -91,7 +91,7 @@ export default function CommentSection({ visible, reportId, onClose }: CommentSh
                         {/* Header */}
                         <View className="flex-row items-center justify-between px-4 pb-3 border-b border-gray-100">
                             <Text className="text-[15px] font-semibold text-gray-900">
-                                Komentar {comments.length > 0 && `(${comments.length})`}
+                                Komentar {comments.length > 0 ? `(${comments.length})` : ""}
                             </Text>
                             <TouchableOpacity onPress={onClose}>
                                 <Ionicons name="close" size={22} color="#6b7280" />

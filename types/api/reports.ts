@@ -22,9 +22,9 @@ export async function createReport(body: {
   lokasi: string;
   urgensi: "rendah" | "sedang" | "tinggi";
   category_id: number;
-  image: string;
-  lat?: number | null;  
-  lng?: number | null;   
+  image: string | null;
+  lat?: number | null;
+  lng?: number | null;
 }) {
   return apiFetch("/reporting", {
     method: "POST",

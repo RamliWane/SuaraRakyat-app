@@ -56,7 +56,7 @@
           lokasi:      alamat.trim(),
           urgensi:     selectedUrgensi as "rendah" | "sedang" | "tinggi",
           category_id: selectedKategori.id,
-          image:       images[0]?.url ?? "no-image.jpg",
+          image:       images[0]?.url ?? "",
           lat:         coords?.lat ?? null,
           lng:         coords?.lng ?? null,
         };
@@ -133,7 +133,6 @@
           })}
         </View>
 
-        {/* Urgensi */}
         <HeaderBikinLaporan icon="alert-outline" label="Tingkat Urgensi" />
         <View className="px-4 py-4 flex-row gap-3">
           {URGENSI_LIST.map((item) => {
